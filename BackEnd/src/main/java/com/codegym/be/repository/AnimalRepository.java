@@ -1,21 +1,22 @@
 package com.codegym.be.repository;
 
 import com.codegym.be.model.Animal;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface AnimalRepository extends JpaRepository<Animal, Long> {
-    @Override
-    @Query (value = "select a.* from animal a",
-            countQuery = "select a.* from animal",
-            nativeQuery = true)
-    List<Animal> findAll();
+//    @Override
+//    @Query (value = "select a.* from animal a",
+//            countQuery = "select a.* from animal",
+//            nativeQuery = true)
+//    Page<Animal> findAll(Pageable pageable);
 
     @Override
     @Modifying

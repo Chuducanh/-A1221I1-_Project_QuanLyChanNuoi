@@ -1,0 +1,133 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding-right: 100px; padding-left:100px">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="../../assets/img/logoXoaPhong-image.png" width="80" height="80"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          Trang chủ
+        </li>
+        <li class="nav-item">
+          Quản lý nhân viên
+        </li>
+        <li class="nav-item">
+          Quản lý cá thể
+        </li>
+        <li class="nav-item">
+          Hệ thống
+        </li>
+        <li class="nav-item">
+          Tin tức
+        </li>
+      </ul>
+      <p class="name-employ my-2">Duc Anh Chu</p>
+      <img src="../../assets/img/avatar.png" width="50px" height="50px">
+
+    </div>
+  </div>
+</nav>
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h2><b>Quản lý cá thể</b></h2>
+          </div>
+          <div class="col-sm-6">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">
+              Thêm mới cá thể
+            </button>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+              Xóa cá thể
+            </button>
+          </div>
+        </div>
+      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+          <th>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="selectAll">
+								<label for="selectAll"></label>
+							</span>
+          </th>
+          <th>Mã lợn</th>
+          <th>Mã chuồng nuôi</th>
+          <th>Ngày nhập chuồng</th>
+          <th>Ngày xuất chuồng</th>
+          <th>Tình trạng</th>
+          <th>Cân nặng (kg)</th>
+          <th colspan="2">Hành động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let animal of animal.content, index as i">
+          <td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="{{i}}" name="options[]" value="1">
+								<label for="{{i}}"></label>
+							</span>
+          </td>
+          <td>{{animal.id}}</td>
+          <td>{{animal.cageId}}</td>
+          <td>{{animal.dateIn}}</td>
+          <td>{{animal.dateOut}}</td>
+          <td><span *ngIf="animal.isSick ; else loggedOut">Có bệnh</span>
+            <ng-template #loggedOut>
+              Không bị bệnh
+            </ng-template>
+          </td>
+          <td>{{animal.weight}}</td>
+          <td>
+            <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+<!--            <button type="button" class="delete" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="changeId(animal.id)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></button>-->
+            <a class="delete" data-bs-toggle="modal" href="#deleteModal" (click)="changeId(animal.id)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="clearfix" *ngIf="!(animal.isEmpty); else isEmpty">
+        <div style="font-size: 20px" class="hint-text">Showing <b>{{animal.numberOfElements}}</b> out of <b>{{animal.totalElements}}</b> entries</div>
+        <ul class="pagination" >
+          <li class="page-item" *ngIf="indexPagination > 0"><a style="font-size: 20px" (click)="firstPage()" class="page-link">Trang đầu</a></li>
+          <li class="page-item" *ngIf="indexPagination > 1"><a style="font-size: 20px"  (click)="previousTwoPage()" class="page-link">{{indexPagination-1}}</a></li>
+          <li class="page-item" *ngIf="indexPagination > 0" ><a style="font-size: 20px" (click)="previousPage()"  class="page-link">{{indexPagination}}</a></li>
+          <li class="page-item active"><a style="font-size: 20px"  class="page-link">{{indexPagination+1}}</a></li>
+          <li class="page-item" *ngIf="indexPagination + 1 < animal.totalPages" ><a style="font-size: 20px" (click)="nextPage()"  class="page-link">{{indexPagination+2}}</a></li>
+          <li class="page-item" *ngIf="indexPagination + 2 < animal.totalPages"><a style="font-size: 20px" (click)="nextTwoPage()" class="page-link">{{indexPagination+3}}</a></li>
+          <li class="page-item" *ngIf="indexPagination + 1 < animal.totalPages"><a style="font-size: 20px" (click)="lastPage()" class="page-link">Trang cuối</a></li>
+        </ul>
+      </div>
+
+      <ng-template #isEmpty class="clearfix">
+        <div style="font-size: 20px" class="hint-text">Danh sách nhân viên trống</div>
+      </ng-template>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xóa cá thể</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn chắc chắn muốn xóa cá thể với mã lợn là: {{id}}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="delete(id)">Đồng ý</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,13 +13,13 @@ public class Animal {
 
     private boolean isSick;
 
-    private double weight;
+    private float weight;
 
     private LocalDate dateIn;
 
     private LocalDate dateOut;
 
-    public Animal(Long id, String cageId, boolean isSick, double weight, LocalDate dateIn, LocalDate dateOut) {
+    public Animal(Long id, String cageId, boolean isSick, float weight, LocalDate dateIn, LocalDate dateOut) {
         this.id = id;
         this.cageId = cageId;
         this.isSick = isSick;
@@ -55,11 +55,11 @@ public class Animal {
         isSick = sick;
     }
 
-    public double getWeight() {
+    public float getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(float weight) {
         this.weight = weight;
     }
 
