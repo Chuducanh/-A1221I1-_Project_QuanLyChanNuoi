@@ -1,5 +1,6 @@
 package com.codegym.be.service;
 
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -11,4 +12,8 @@ public interface AnimalService<T, Long> {
     void deleteById(Long id);
 
     Optional<T> findById(Long id);
+
+    void save(T t);
+
+    void update(Long id, T t);
 }

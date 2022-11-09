@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AnimalService} from "../service/animal.service";
-// @ts-ignore
 import { ToastrService } from 'ngx-toastr';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-animal-list',
@@ -13,11 +14,32 @@ export class AnimalListComponent implements OnInit {
   animal;
   id: number;
   deletes: number[] = [];
+  formCreate: FormGroup;
 
-  constructor(private animalService : AnimalService, private toastr: ToastrService) { }
+  constructor(private animalService : AnimalService, private toastr: ToastrService,
+              private fb: FormBuilder, private router : Router) { }
 
   ngOnInit(): void {
     this.getAll(this.indexPagination);
+
+    this.formCreate = this.fb.group({
+      id: ['', [Validators.required]],
+      cageId: ['', [Validators.required]],
+      isSick: ['', [Validators.required]],
+      weight: ['', [Validators.required]],
+      dateIn: ['', [Validators.required]],
+      dateOut: ['', [Validators.required]]
+    });
+  }
+
+  onSubmit() {
+    const animal = this.formCreate.value;
+    this.animalService.create(animal).subscribe(() => {
+      this.getAll(0);
+      this.toastr.success('Thêm mới thành công', 'Thông báo');
+    }, error => {
+      this.toastr.error('Thất bại', 'Thông báo');
+    });
   }
 
   getAll(indexPagination) {

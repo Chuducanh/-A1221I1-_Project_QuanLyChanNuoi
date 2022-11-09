@@ -28,4 +28,17 @@ public class AnimalServiceImpl implements AnimalService<Animal, Long>{
     public Optional<Animal> findById(Long id) {
         return animalRepository.findById(id);
     }
+
+    @Override
+    public void save(Animal animal) {
+        animalRepository.save(animal);
+    }
+
+    @Override
+    public void update(Long id, Animal animal) {
+        animal.setId(id);
+        animalRepository.save(animal);
+    }
+
+
 }

@@ -23,4 +23,14 @@ export class AnimalService {
   delete(id: number): Observable<Animal> {
     return this.http.delete<Animal>(`${apiUrl}/${id}`);
   }
+
+  create(animal : Animal): Observable<Animal>{
+    return this.http.post<Animal>(apiUrl, animal);
+  }
+
+  update(id: number, animal: Animal): Observable<Animal> {
+    return this.http.put<Animal>(`${apiUrl}/${id}`, animal);
+  }
+
+
 }

@@ -38,7 +38,7 @@
             <h2><b>Quản lý cá thể</b></h2>
           </div>
           <div class="col-sm-6">
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createModal">
               Thêm mới cá thể
             </button>
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
@@ -75,33 +75,49 @@
           </td>
           <td>{{animal.id}}</td>
           <td>{{animal.cageId}}</td>
-          <td>{{animal.dateIn}}</td>
-          <td>{{animal.dateOut}}</td>
+          <td>{{animal.dateIn | date: "dd/MM/yyyy"}}</td>
+          <td>{{animal.dateOut | date: "dd/MM/yyyy"}}</td>
           <td><span *ngIf="animal.isSick ; else loggedOut">Có bệnh</span>
             <ng-template #loggedOut>
-              Không bị bệnh
+              Khỏe mạnh
             </ng-template>
           </td>
           <td>{{animal.weight}}</td>
           <td>
-            <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-<!--            <button type="button" class="delete" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="changeId(animal.id)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></button>-->
-            <a class="delete" data-bs-toggle="modal" href="#deleteModal" (click)="changeId(animal.id)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
+                                                                             data-toggle="tooltip"
+                                                                             title="Edit">&#xE254;</i></a>
+            <!--            <button type="button" class="delete" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="changeId(animal.id)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></button>-->
+            <a class="delete" data-bs-toggle="modal" href="#deleteModal" (click)="changeId(animal.id)"><i
+              class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
           </td>
         </tr>
         </tbody>
       </table>
 
       <div class="clearfix" *ngIf="!(animal.isEmpty); else isEmpty">
-        <div style="font-size: 20px" class="hint-text">Showing <b>{{animal.numberOfElements}}</b> out of <b>{{animal.totalElements}}</b> entries</div>
-        <ul class="pagination" >
-          <li class="page-item" *ngIf="indexPagination > 0"><a style="font-size: 20px" (click)="firstPage()" class="page-link">Trang đầu</a></li>
-          <li class="page-item" *ngIf="indexPagination > 1"><a style="font-size: 20px"  (click)="previousTwoPage()" class="page-link">{{indexPagination-1}}</a></li>
-          <li class="page-item" *ngIf="indexPagination > 0" ><a style="font-size: 20px" (click)="previousPage()"  class="page-link">{{indexPagination}}</a></li>
-          <li class="page-item active"><a style="font-size: 20px"  class="page-link">{{indexPagination+1}}</a></li>
-          <li class="page-item" *ngIf="indexPagination + 1 < animal.totalPages" ><a style="font-size: 20px" (click)="nextPage()"  class="page-link">{{indexPagination+2}}</a></li>
-          <li class="page-item" *ngIf="indexPagination + 2 < animal.totalPages"><a style="font-size: 20px" (click)="nextTwoPage()" class="page-link">{{indexPagination+3}}</a></li>
-          <li class="page-item" *ngIf="indexPagination + 1 < animal.totalPages"><a style="font-size: 20px" (click)="lastPage()" class="page-link">Trang cuối</a></li>
+        <div style="font-size: 20px" class="hint-text">Showing <b>{{animal.numberOfElements}}</b> out of
+          <b>{{animal.totalElements}}</b> entries
+        </div>
+        <ul class="pagination">
+          <li class="page-item" *ngIf="indexPagination > 0"><a style="font-size: 20px" (click)="firstPage()"
+                                                               class="page-link">Trang đầu</a></li>
+          <li class="page-item" *ngIf="indexPagination > 1"><a style="font-size: 20px" (click)="previousTwoPage()"
+                                                               class="page-link">{{indexPagination - 1}}</a></li>
+          <li class="page-item" *ngIf="indexPagination > 0"><a style="font-size: 20px" (click)="previousPage()"
+                                                               class="page-link">{{indexPagination}}</a></li>
+          <li class="page-item active"><a style="font-size: 20px" class="page-link">{{indexPagination + 1}}</a></li>
+          <li class="page-item" *ngIf="indexPagination + 1 < animal.totalPages"><a style="font-size: 20px"
+                                                                                   (click)="nextPage()"
+                                                                                   class="page-link">{{indexPagination + 2}}</a>
+          </li>
+          <li class="page-item" *ngIf="indexPagination + 2 < animal.totalPages"><a style="font-size: 20px"
+                                                                                   (click)="nextTwoPage()"
+                                                                                   class="page-link">{{indexPagination + 3}}</a>
+          </li>
+          <li class="page-item" *ngIf="indexPagination + 1 < animal.totalPages"><a style="font-size: 20px"
+                                                                                   (click)="lastPage()"
+                                                                                   class="page-link">Trang cuối</a></li>
         </ul>
       </div>
 
@@ -113,7 +129,7 @@
   </div>
 </div>
 
-
+<!--DELETE MODAL-->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -131,3 +147,94 @@
     </div>
   </div>
 </div>
+
+
+<!--CREATE MODAL-->
+<div id="createModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="formCreate" (ngSubmit)="onSubmit()">
+        <div class="modal-header">
+          <h4 class="modal-title">Thêm mới cá thể</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Mã lợn: </label>
+            <input type="number" class="form-control" formControlName="id">
+            <div *ngIf="formCreate.get('id').invalid && (formCreate.get('id').touched || formCreate.get('id').dirty)" class="alert alert-danger">
+              <div *ngIf="formCreate.get('id').errors?.required">
+                Không được để trống
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Mã chuồng: </label>
+            <input type="text" class="form-control" formControlName="cageId">
+            <div
+              *ngIf="formCreate.get('cageId').invalid && (formCreate.get('cageId').touched || formCreate.get('cageId').dirty)"
+              class="alert alert-danger">
+              <div *ngIf="formCreate.get('cageId').errors?.required">
+                Không được để trống
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Tình trạng: </label>
+            <select formControlName="isSick">
+              <option [value]="0">Khỏe mạnh</option>
+              <option [value]="1">Bị bệnh</option>
+            </select>
+            <div
+              *ngIf="formCreate.get('isSick').invalid && (formCreate.get('isSick').touched || formCreate.get('isSick').dirty)"
+              class="alert alert-danger">
+              <div *ngIf="formCreate.get('isSick').errors?.required">
+                Không được để trống
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Cân nặng: </label>
+            <input type="number" class="form-control" formControlName="weight">
+            <div
+              *ngIf="formCreate.get('weight').invalid && (formCreate.get('weight').touched || formCreate.get('weight').dirty)"
+              class="alert alert-danger">
+              <div *ngIf="formCreate.get('weight').errors?.required">
+                Không được để trống
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Ngày nhập chuồng: </label>
+            <input type="date" class="form-control" formControlName="dateIn">
+            <div
+              *ngIf="formCreate.get('dateIn').invalid && (formCreate.get('dateIn').touched || formCreate.get('dateIn').dirty)"
+              class="alert alert-danger">
+              <div *ngIf="formCreate.get('dateIn').errors?.required">
+                Không được để trống
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Ngày xuất chuồng: </label>
+            <input type="date" class="form-control" formControlName="dateOut">
+            <div
+              *ngIf="formCreate.get('dateOut').invalid && (formCreate.get('dateOut').touched || formCreate.get('dateOut').dirty)"
+              class="alert alert-danger">
+              <div *ngIf="formCreate.get('dateOut').errors?.required">
+                Không được để trống
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
+            <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Lưu</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+

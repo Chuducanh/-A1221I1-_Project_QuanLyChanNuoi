@@ -10,19 +10,18 @@ import java.time.LocalDate;
 
 
 public class AnimalDTO implements Validator {
-    @NotEmpty(message = "Mã lợn không được để trống")
+
     private Long id;
 
     @NotEmpty(message = "Mã chuồng không được để trống")
     private String cageId;
 
-    @NotEmpty(message = "Tình trạng không được để trống")
+
     private boolean isSick;
 
-    @NotEmpty(message = "Cân nặng không được để trống")
+
     private double weight;
 
-    @NotEmpty(message = "Ngày nhập chuồng không được để trống")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateIn;
 
