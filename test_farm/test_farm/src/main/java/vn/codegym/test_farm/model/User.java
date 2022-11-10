@@ -2,9 +2,8 @@ package vn.codegym.test_farm.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -12,8 +11,12 @@ public class User {
     private String username;
     private String password;
 
-    @JsonBackReference
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "username")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")})
+    private List<Role> roles;
     @OneToOne(mappedBy = "user")
+    @JsonBackReference
     private Employee employee;
 
     public User() {

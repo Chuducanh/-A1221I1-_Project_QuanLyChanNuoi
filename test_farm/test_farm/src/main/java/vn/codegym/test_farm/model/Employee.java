@@ -12,18 +12,18 @@ public class Employee {
     private String name;
     private String cmnd;
     private Date birthday;
-    private Boolean gender;
+    private boolean gender;
     private String email;
     private String img_url;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "username_id", referencedColumnName = "username")
+    @JoinColumn(name = "username", referencedColumnName = "username")
     private User user;
 
     public Employee() {
     }
 
-    public Employee(Long id, String name, String cmnd, Date birthday, Boolean gender, String email, String img_url, User user) {
+    public Employee(Long id, String name, String cmnd, Date birthday, boolean gender, String email, String img_url, User user) {
         this.id = id;
         this.name = name;
         this.cmnd = cmnd;
@@ -66,11 +66,11 @@ public class Employee {
         this.birthday = birthday;
     }
 
-    public Boolean getGender() {
+    public boolean getGender() {
         return gender;
     }
 
-    public void setGender(Boolean gender) {
+    public void setGender(boolean gender) {
         this.gender = gender;
     }
 

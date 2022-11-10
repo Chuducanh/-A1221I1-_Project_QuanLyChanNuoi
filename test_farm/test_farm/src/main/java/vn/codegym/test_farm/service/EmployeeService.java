@@ -15,25 +15,13 @@ public class EmployeeService implements IEmployeeService {
     @Autowired
     private IEmployeeRepository employeeRepository;
 
-//    @Override
-//    public List<Employee> findAllEmployee() {
-//        return employeeRepository.findAll();
-//    }
 
     @Override
     public Page<Employee> findAll(Pageable pageable) {
         return employeeRepository.findAll(pageable);
     }
 
-    @Override
-    public void create(Employee employee) {
 
-    }
-
-    @Override
-    public void edit(Long id) {
-
-    }
 
     @Override
     public void delete(Long id) {
