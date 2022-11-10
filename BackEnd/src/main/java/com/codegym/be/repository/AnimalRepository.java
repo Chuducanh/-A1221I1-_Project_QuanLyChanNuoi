@@ -24,9 +24,9 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
             nativeQuery = true)
     void deleteById(Long id);
 
-    @Override
-    @Query (value = "select a.* from animal a where a.id = ?1",
-            countQuery = "select a.* from animal a where a.id=?1",
-            nativeQuery = true)
-    Optional<Animal> findById(Long id);
+//    @Override
+//    @Query (value = "select a.* from animal a where a.id = ?1",
+//            countQuery = "select a.* from animal a where a.id=?1",
+//            nativeQuery = true)
+//    Optional<Animal> findById(Long id);
 }

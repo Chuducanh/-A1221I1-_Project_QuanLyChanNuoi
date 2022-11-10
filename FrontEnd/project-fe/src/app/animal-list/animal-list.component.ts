@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AnimalService} from "../service/animal.service";
-import { ToastrService } from 'ngx-toastr';
+import {ToastrService} from 'ngx-toastr';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-animal-list',
@@ -15,30 +15,103 @@ export class AnimalListComponent implements OnInit {
   id: number;
   deletes: number[] = [];
   formCreate: FormGroup;
+  formEdit: FormGroup;
 
-  constructor(private animalService : AnimalService, private toastr: ToastrService,
-              private fb: FormBuilder, private router : Router) { }
+  constructor(private animalService: AnimalService, private toastr: ToastrService,
+              private fb: FormBuilder) {
+  }
 
   ngOnInit(): void {
     this.getAll(this.indexPagination);
 
     this.formCreate = this.fb.group({
-      id: ['', [Validators.required]],
+        id: [],
+        cageId: ['', [Validators.required]],
+        isSick: ['', [Validators.required]],
+        weight: ['', [Validators.required]],
+        dateIn: ['', [Validators.required]],
+        dateOut: ['', [Validators.required]],
+      },
+      {
+        validators: [this.dateValidator('dateIn', 'dateOut'),
+          this.dateValidator('dateIn', 'dateOut')]
+      });
+
+    this.editModal(this.id);
+  }
+
+  dateValidator(dateIn: string, dateOut: string) {
+    return (formGroup: FormGroup) => {
+      const control1 = formGroup.controls[dateIn];
+      const control2 = formGroup.controls[dateOut];
+
+      if (control1.errors && !control2.errors.confirmedValidator) {
+        return;
+      }
+
+      if (control1.value > control2.value) {
+        control2.setErrors({dateValidator: true});
+      } else {
+        control2.setErrors(null);
+      }
+    };
+  }
+
+  editModal(id: number) {
+    this.id = id;
+    this.formEdit = this.fb.group({
+      id: [],
       cageId: ['', [Validators.required]],
       isSick: ['', [Validators.required]],
       weight: ['', [Validators.required]],
       dateIn: ['', [Validators.required]],
       dateOut: ['', [Validators.required]]
+    },
+      {
+        validators: [this.dateValidator('dateIn', 'dateOut'),
+          this.dateValidator('dateIn', 'dateOut')]
+      });
+
+    this.animalService.findById(this.id).subscribe(animalEdit => {
+      this.formEdit.patchValue(animalEdit);
+      console.log(this.formEdit);
     });
+  }
+
+  deleteMultiple() {
+    for (let i of this.deletes) {
+      this.delete(i);
+    }
+    this.deletes = [];
+  }
+
+  multiDelete(id) {
+    if (this.deletes.find(x=>x==id))
+    {
+      this.deletes.splice(this.deletes.indexOf(id),1)
+    }
+    else {this.deletes.push(id);}
+    console.log(this.deletes);
   }
 
   onSubmit() {
     const animal = this.formCreate.value;
+    console.log(animal);
     this.animalService.create(animal).subscribe(() => {
       this.getAll(0);
       this.toastr.success('Thêm mới thành công', 'Thông báo');
     }, error => {
-      this.toastr.error('Thất bại', 'Thông báo');
+      this.toastr.error('Thêm mới thất bại', 'Thông báo');
+    });
+  }
+
+  onSubmitEdit(id: number) {
+    const animal = this.formEdit.value;
+    this.animalService.update(id, animal).subscribe(() => {
+      this.getAll(0);
+      this.toastr.success('Chỉnh sửa thành công', 'Thông báo');
+    }, error => {
+      this.toastr.error('Chỉnh sửa thất bại', 'Thông báo');
     });
   }
 
@@ -58,7 +131,7 @@ export class AnimalListComponent implements OnInit {
       this.getAll(0);
       this.toastr.success('Đã xóa thành công', 'Thông báo');
     }, error => {
-      alert('Loi');
+      this.toastr.error('Xóa thất bại', 'Thông báo')
     });
   }
 
@@ -116,7 +189,7 @@ export class AnimalListComponent implements OnInit {
 
 
   lastPage() {
-    this.indexPagination = this.animal.totalPages-1;
+    this.indexPagination = this.animal.totalPages - 1;
     this.animalService.getAll(this.indexPagination).subscribe(data => {
       this.animal = data;
     })

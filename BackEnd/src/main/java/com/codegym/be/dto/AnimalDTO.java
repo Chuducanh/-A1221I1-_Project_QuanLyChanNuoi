@@ -6,20 +6,19 @@ import org.springframework.validation.Validator;
 
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 
 public class AnimalDTO implements Validator {
-
     private Long id;
-
     @NotEmpty(message = "Mã chuồng không được để trống")
     private String cageId;
 
-
+    @NotNull
     private boolean isSick;
 
-
+    @NotNull
     private double weight;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -28,25 +27,11 @@ public class AnimalDTO implements Validator {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOut;
 
-    public AnimalDTO(Long id, String cageId, boolean isSick, double weight, LocalDate dateIn, LocalDate dateOut) {
-        this.id = id;
-        this.cageId = cageId;
-        this.isSick = isSick;
-        this.weight = weight;
-        this.dateIn = dateIn;
-        this.dateOut = dateOut;
-    }
+
 
     public AnimalDTO() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getCageId() {
         return cageId;
@@ -102,5 +87,13 @@ public class AnimalDTO implements Validator {
         {
             errors.rejectValue("dateOut", "dateOut.lessThan");
         }
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -25,7 +25,7 @@ public class AnimalController {
     private AnimalService animalService;
 
     @GetMapping
-    public ResponseEntity<Page<Animal>> getAnimalList(@PageableDefault(value = 1) Pageable pageable)
+    public ResponseEntity<Page<Animal>> getAnimalList(@PageableDefault(value = 3) Pageable pageable)
     {
         Page<Animal> animal = animalService.findAll(pageable);
         if (animal.isEmpty()){
@@ -52,6 +52,7 @@ public class AnimalController {
         }
         Animal animal = new Animal();
         BeanUtils.copyProperties(animalDTO, animal);
+        System.out.println(animal.getId());
         animalService.save(animal);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -70,5 +71,14 @@ public class AnimalController {
             animalService.update(id, animal);
             return new ResponseEntity<>(HttpStatus.OK);
         }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Animal> findAnimalById(@PathVariable("id") Long id){
+        Optional<Animal> animal = animalService.findById(id);
+        if (!animal.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(animal.get(),HttpStatus.OK);
     }
 }
