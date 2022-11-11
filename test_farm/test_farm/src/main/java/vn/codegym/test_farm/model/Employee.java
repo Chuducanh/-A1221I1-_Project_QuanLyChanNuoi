@@ -1,7 +1,5 @@
 package vn.codegym.test_farm.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,7 +8,7 @@ public class Employee {
     @Id
     private Long id;
     private String name;
-    private String cmnd;
+    private String identityNumber;
     private Date birthday;
     private boolean gender;
     private String email;
@@ -23,10 +21,10 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long id, String name, String cmnd, Date birthday, boolean gender, String email, String img_url, User user) {
+    public Employee(Long id, String name, String identityNumber, Date birthday, boolean gender, String email, String img_url, User user) {
         this.id = id;
         this.name = name;
-        this.cmnd = cmnd;
+        this.identityNumber = identityNumber;
         this.birthday = birthday;
         this.gender = gender;
         this.email = email;
@@ -50,12 +48,12 @@ public class Employee {
         this.name = name;
     }
 
-    public String getCmnd() {
-        return cmnd;
+    public String getIdentityNumber() {
+        return identityNumber;
     }
 
-    public void setCmnd(String cmnd) {
-        this.cmnd = cmnd;
+    public void setIdentityNumber(String identityNumber) {
+        this.identityNumber = identityNumber;
     }
 
     public Date getBirthday() {
