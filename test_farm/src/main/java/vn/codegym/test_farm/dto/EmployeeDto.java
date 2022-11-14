@@ -1,11 +1,10 @@
 package vn.codegym.test_farm.dto;
 
 import lombok.Data;
-import org.hibernate.validator.constraints.UniqueElements;
 import vn.codegym.test_farm.model.User;
 
 import javax.validation.constraints.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 public class EmployeeDto {
@@ -16,8 +15,7 @@ public class EmployeeDto {
     @NotBlank
     @Size(min = 9, max = 12)
     private String identityNumber;
-    @NotNull
-    private Date birthday;
+    private LocalDate birthday;
     @NotNull
     private boolean gender;
     @NotBlank
@@ -31,7 +29,7 @@ public class EmployeeDto {
     public EmployeeDto() {
     }
 
-    public EmployeeDto(Long id, String name, String identityNumber, Date birthday, boolean gender, String email, String img_url, User user) {
+    public EmployeeDto(Long id, String name, String identityNumber, LocalDate birthday, boolean gender, String email, String img_url, User user) {
         this.id = id;
         this.name = name;
         this.identityNumber = identityNumber;
@@ -66,11 +64,11 @@ public class EmployeeDto {
         this.identityNumber = identityNumber;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 

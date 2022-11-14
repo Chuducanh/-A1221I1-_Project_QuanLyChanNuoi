@@ -3,6 +3,7 @@ package vn.codegym.test_farm.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -13,7 +14,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Date birthday;
+    private LocalDate birthday;
     private String identityNumber;
     private boolean gender;
     private String email;
