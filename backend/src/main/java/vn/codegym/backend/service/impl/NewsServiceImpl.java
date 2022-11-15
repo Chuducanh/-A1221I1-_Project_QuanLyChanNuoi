@@ -43,6 +43,11 @@ public class NewsServiceImpl implements INewsService<News> {
     @Override
     public void update(Long id, News news) {
 
-        newsRepository.update(news.getAuthor(),news.getContent(),news.getDateCreate(),news.getFirstSentence(),news.getSource_url(),news.getTitle(),id);
+        newsRepository.update(news.getAuthor(),
+                            news.getContent(),
+                            news.getDateCreate(),
+                            news.getFirstSentence(),
+                            news.getSource_url(),
+                            news.getTitle(),id);
     }
 }

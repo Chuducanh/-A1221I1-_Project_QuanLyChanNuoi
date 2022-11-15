@@ -6,21 +6,17 @@ import { BodyComponent } from './body.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import {NgxSlickJsModule} from "ngx-slickjs";
 import { NewsdetailComponent } from './newsdetail/newsdetail.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {ShareModule} from "../share/share.module";
 
 @NgModule({
-    declarations: [
-      BodyComponent,
-      HomepageComponent,
-      NewsdetailComponent,
-    ],
-    exports: [
-        BodyComponent
-    ],
+  declarations: [BodyComponent, HomepageComponent, NewsdetailComponent],
+  exports: [
+    BodyComponent
+  ],
   imports: [
     CommonModule,
     BodyRoutingModule,
+    ShareModule,
     NgxSlickJsModule,
   ]
 })

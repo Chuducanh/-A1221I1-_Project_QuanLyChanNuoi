@@ -7,16 +7,18 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {ToastrModule} from "ngx-toastr";
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import {SecurityComponent} from "./security.component";
+import {FocusInvalidInputDirective} from "../helpers/focus-invalid-input.directive";
 
 
 @NgModule({
-  declarations: [LoginComponent, ResetPasswordComponent],
+  declarations: [SecurityComponent, LoginComponent, ResetPasswordComponent],
   imports: [
     CommonModule,
     SecurityRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ]
 })
 export class SecurityModule { }

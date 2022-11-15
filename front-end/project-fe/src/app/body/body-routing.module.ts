@@ -7,7 +7,13 @@ import {NewsdetailComponent} from "./newsdetail/newsdetail.component";
 
 const routes: Routes = [
   {
-    path: '', component: HomepageComponent
+    path: '', component: BodyComponent, children: [
+      {path: '', component: HomepageComponent}
+    ]
+  },
+  {
+    path: 'home',
+    component: HomepageComponent
   },
   {
     path:'news/:id',component:NewsdetailComponent

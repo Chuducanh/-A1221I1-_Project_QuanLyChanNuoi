@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   roles: string[] = [];
   formResetPass: FormGroup;
+  url = '';
 
   @ViewChild('modalForgot') modalForgotPass;
   @ViewChild('closBtn') closBtn;
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
               private toastrService: ToastrService,
               private userService: UserService,
               private shareService: ShareService) {
+    this.url = router.url;
   }
 
   ngOnInit(): void {
@@ -50,7 +52,6 @@ export class LoginComponent implements OnInit {
           this.tokenStorageService.saveTokenSession(data.accessToken);
           this.userService.getUserFromToken(data.accessToken).subscribe(
             data => {
-              console.log(data);
               this.tokenStorageService.saveUserSession(data);
               this.authService.isLoggedIn = true;
               this.formLogin.reset();
@@ -90,8 +91,10 @@ export class LoginComponent implements OnInit {
 
   forgotPassword() {
     if (this.formResetPass.valid) {
+      this.el.nativeElement.querySelector('.loading-container').style.display = 'block';
       this.authService.forgotPassword(this.formResetPass.get('email').value).subscribe(
         data => {
+          this.el.nativeElement.querySelector('.loading-container').style.display = 'none';
           this.toastrService.success(data.message, "Thông báo", {
             timeOut: 2000,
             extendedTimeOut: 1500,
@@ -100,6 +103,7 @@ export class LoginComponent implements OnInit {
           this.closBtn.nativeElement.click();
         },
         error => {
+          this.el.nativeElement.querySelector('.loading-container').style.display = 'none';
           this.toastrService.warning(error.error.message, "Thông báo", {
             timeOut: 2000,
             extendedTimeOut: 1500,
@@ -113,4 +117,13 @@ export class LoginComponent implements OnInit {
   onForgotPasswordClicked() {
     this.modalForgotPass.nativeElement.showModal();
   }
+
+  // togglePassword(idInput: string, idToggle: string) {
+  //   const input = this.el.nativeElement.querySelector(idInput);
+  //   const toggle = this.el.nativeElement.querySelector(idToggle);
+  //   const typeInput = input.type === 'text' ? 'password' : 'text';
+  //   input.setAttribute('type', typeInput);
+  //   toggle.classList.toggle('bi-eye-slash');
+  //   toggle.classList.toggle('bi-eye');
+  // }
 }

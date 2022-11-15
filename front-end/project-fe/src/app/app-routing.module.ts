@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {BodyComponent} from "./body/body.component";
 
 
-const routes: Routes = [
-  { path: '', loadChildren: () => import('./body/body.module').then(m => m.BodyModule) },
-  { path: '', loadChildren: () => import('./security/security.module').then(m => m.SecurityModule)}
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,{scrollPositionRestoration: 'enabled'})],
-  // imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

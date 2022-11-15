@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -13,9 +14,10 @@ import java.util.List;
 public class User {
     @Id
     @Column(name = "username")
-    @Pattern(regexp = "[a-zA-Z0-9_-]{5,12}$")
+    @Pattern(regexp = "^[a-zA-Z0-9_-]*$")
     private String username;
     @Column(name = "password")
+    @Size(min = 64)
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "username")},

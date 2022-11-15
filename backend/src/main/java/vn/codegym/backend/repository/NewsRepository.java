@@ -34,7 +34,6 @@ public interface NewsRepository extends JpaRepository<News, Long> {
             "VALUES (?,?,?,?,?,?);", nativeQuery = true)
     void saveNews(String author, String content, Date dateCreate, String firstSentence, String source_url, String title);
 
-
     @Transactional
     @Modifying
     @Query(value = "update news set `author`=?, `content`=?, `date_create`=?, `first_sentence`=?, `source_url`=?, `title`=? where `id`=?",nativeQuery = true)

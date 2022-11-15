@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
+import {LoginComponent} from "./security/login/login.component";
 
 @Component({
   selector: 'app-root',
