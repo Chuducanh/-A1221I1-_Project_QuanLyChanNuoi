@@ -9,6 +9,7 @@ import {ToastrModule} from "ngx-toastr";
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import {SecurityComponent} from "./security.component";
 import {FocusInvalidInputDirective} from "../helpers/focus-invalid-input.directive";
+import {ShareModule} from "../share/share.module";
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {FocusInvalidInputDirective} from "../helpers/focus-invalid-input.directi
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
+    ShareModule,
   ]
 })
 export class SecurityModule { }

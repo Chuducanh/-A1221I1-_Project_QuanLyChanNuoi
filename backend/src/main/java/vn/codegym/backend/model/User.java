@@ -17,7 +17,6 @@ public class User {
     @Pattern(regexp = "^[a-zA-Z0-9_-]*$")
     private String username;
     @Column(name = "password")
-    @Size(min = 64)
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "username")},

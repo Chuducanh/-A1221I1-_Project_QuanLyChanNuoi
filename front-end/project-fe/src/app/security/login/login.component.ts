@@ -108,7 +108,8 @@ export class LoginComponent implements OnInit {
             timeOut: 2000,
             extendedTimeOut: 1500,
             progressBar: true
-          })
+          });
+          this.closBtn.nativeElement.click();
         }
       )
     }
@@ -118,12 +119,4 @@ export class LoginComponent implements OnInit {
     this.modalForgotPass.nativeElement.showModal();
   }
 
-  // togglePassword(idInput: string, idToggle: string) {
-  //   const input = this.el.nativeElement.querySelector(idInput);
-  //   const toggle = this.el.nativeElement.querySelector(idToggle);
-  //   const typeInput = input.type === 'text' ? 'password' : 'text';
-  //   input.setAttribute('type', typeInput);
-  //   toggle.classList.toggle('bi-eye-slash');
-  //   toggle.classList.toggle('bi-eye');
-  // }
 }

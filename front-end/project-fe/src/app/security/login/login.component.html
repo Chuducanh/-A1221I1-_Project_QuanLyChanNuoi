@@ -13,7 +13,6 @@
           <i class="fas fa-user"></i>
         </div>
         <div class="div">
-          <!--          <h5>Tên đăng nhập</h5>-->
           <input type="text" class="input" formControlName="username" placeholder="Tên đăng nhập">
           <div *ngIf="username.invalid && (username.touched || flg.submitted)" class="text-danger message">
             <div *ngIf="username.errors?.required">
@@ -30,7 +29,6 @@
           <i class="fas fa-lock"></i>
         </div>
         <div class="div">
-          <!--          <h5>Mật khẩu</h5>-->
           <input type="password" class="input" formControlName="password" placeholder="Mật khẩu">
           <div *ngIf="password.invalid && (password.touched || flg.submitted)" class="text-danger message">
             <div *ngIf="password.errors?.required">
@@ -54,8 +52,6 @@
   </div>
 </div>
 
-<!-- Modal -->
-<!--*ngIf="isShowResetPassModal"-->
 <div #modalForgot class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog m-auto d-flex align-items-center h-100">
     <div class="modal-content border border-5 border-primary">
