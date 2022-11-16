@@ -2,55 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7178f3a-8fbf-4001-9f5b-a238e7081df4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/6.7/executionHistory/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/6.7/executionHistory/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/6.7/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/6.7/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/6.7/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/6.7/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/7.5.1/checksums/checksums.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/7.5.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/7.5.1/dependencies-accessors/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/7.5.1/executionHistory/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/7.5.1/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/7.5.1/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/7.5.1/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/7.5.1/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/checksums/checksums.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/configuration-cache/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/file-system.probe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.gradle/vcs-1/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.idea/A12_Project.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.idea/sonarlint/issuestore/index.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/HELP.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/build/classes/java/main/codegym/com/example/a12_project/A12ProjectApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/build/classes/java/main/codegym/com/example/a12_project/AnimalDTO/AnimalDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/build/classes/java/main/codegym/com/example/a12_project/controller/AnimalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/build/classes/java/main/codegym/com/example/a12_project/model/Animal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/build/classes/java/main/codegym/com/example/a12_project/repository/AnimalRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/build/classes/java/main/codegym/com/example/a12_project/service/AnimalService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/build/classes/java/main/codegym/com/example/a12_project/service/AnimalServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/build/resources/main/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A12_Project/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/animalFe" beforeDir="false" afterPath="$PROJECT_DIR$/animalFe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirstCommit.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.idea/modules.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +27,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../customer_connect_be/customer_connect_be" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../front-end" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2021.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
@@ -89,6 +44,7 @@
       <workItem from="1667924473655" duration="5680000" />
       <workItem from="1668092065196" duration="101000" />
       <workItem from="1668092240335" duration="673000" />
+      <workItem from="1668424155779" duration="42000" />
     </task>
     <servers />
   </component>
