@@ -3,6 +3,7 @@ import {TokenStorageService} from "../../service/token-storage.service";
 import {AuthService} from "../../service/auth.service";
 import {ShareService} from "../../service/share.service";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(private tokenStorageService: TokenStorageService,
               private shareService: ShareService,
-              private router: Router) {
+              private router: Router,
+              private toastrService: ToastrService) {
     this.shareService.getClickEvent().subscribe(() => {
       this.loadHeader();
     })
@@ -40,6 +42,11 @@ export class HeaderComponent implements OnInit {
   logOut() {
     this.tokenStorageService.logOut();
     this.ngOnInit();
+    this.toastrService.success("Đăng xuất thành công", "Thông báo", {
+      timeOut: 2000,
+      extendedTimeOut: 1500,
+      progressBar: true
+    });
     this.router.navigateByUrl('');
   }
 

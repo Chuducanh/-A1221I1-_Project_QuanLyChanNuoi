@@ -228,8 +228,9 @@ span {
 .message {
   position: absolute;
   display: flex;
-  margin-top: 55px;
+  margin-top: 52px;
   padding: 0 5px 0 5px;
+  font-size: 15px !important;
 }
 
 
@@ -277,10 +278,9 @@ span {
   font-weight: bold;
 }
 
-.message-reset {
-  position: absolute;
-  margin-top: 55px;
-  font-size: 16px;
-  padding: 8px 12px;
-}
-
+/*.message-reset {*/
+/*  position: absolute;*/
+/*  margin-top: 55px;*/
+/*  font-size: 14px !important;*/
+/*  padding: 8px 12px;*/
+/*}*/

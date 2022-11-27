@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {JwtHelperService} from "@auth0/angular-jwt";
 
 const AUTH_API = environment.auth_api;
 @Injectable({
@@ -11,7 +12,7 @@ export class AuthService {
   httpOptions: any;
   isLoggedIn: boolean;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private jwtHelperService: JwtHelperService) {
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -38,5 +39,10 @@ export class AuthService {
       confirmPassword: resetPassRequest.confirmPassword,
       token: resetPassRequest.token
     }, this.httpOptions)
+  }
+
+  public isAuthenticated(): boolean {
+    const token = sessionStorage.getItem('token');
+    return !this.jwtHelperService.isTokenExpired(token);
   }
 }

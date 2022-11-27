@@ -73,15 +73,18 @@ public class AuthenticationController {
 
     @PostMapping("/reset-password")
     public ResponseEntity<ResponseMessage> resetPassword(@RequestBody ResetPassRequest request) {
+        if (!jwtUtil.validateAccessToken(request.getToken())) {
+            return new ResponseEntity<>(new ResponseMessage(jwtUtil.message), HttpStatus.BAD_REQUEST);
+        }
         String username = jwtUtil.getUsernameFromToken(request.getToken());
         Optional<User> userOptional = userService.findByUsername(username);
         if (!userOptional.isPresent()) {
-            return new ResponseEntity<>(new ResponseMessage("Link đổi mật khẩu đã hết hiệu lực"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new ResponseMessage("Không tìm thấy tài khoản của bạn."), HttpStatus.BAD_REQUEST);
         }
         if (!request.getPassword().equals(request.getConfirmPassword())) {
-            return new ResponseEntity<>(new ResponseMessage("Mật khẩu không trùng khớp"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new ResponseMessage("Mật khẩu không trùng khớp."), HttpStatus.BAD_REQUEST);
         }
         userService.updatePassword(userOptional.get(), request.getPassword());
-        return new ResponseEntity<>(new ResponseMessage("Đổi mật khẩu thành công"), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseMessage("Đổi mật khẩu thành công."), HttpStatus.OK);
     }
 }

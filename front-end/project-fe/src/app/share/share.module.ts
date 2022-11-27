@@ -6,15 +6,17 @@ import { ShareComponent } from './share.component';
 import {FooterComponent} from "./footer/footer.component";
 import {HeaderComponent} from "./header/header.component";
 import {LogosliderComponent} from "./logoslider/logoslider.component";
+import {FocusInvalidInputDirective} from "../helpers/focus-invalid-input.directive";
 
 
 @NgModule({
-  declarations: [ShareComponent, FooterComponent, HeaderComponent, LogosliderComponent],
+  declarations: [ShareComponent, FooterComponent, HeaderComponent, LogosliderComponent, FocusInvalidInputDirective],
   exports: [
     HeaderComponent,
     LogosliderComponent,
     FooterComponent,
-    ShareComponent
+    ShareComponent,
+    FocusInvalidInputDirective
   ],
   imports: [
     CommonModule,

@@ -12,6 +12,7 @@ import {SecurityModule} from "./security/security.module";
 import {JwtInterceptor} from "./helpers/jwt-interceptor";
 import {ShareModule} from "./share/share.module";
 import { FocusInvalidInputDirective } from './helpers/focus-invalid-input.directive';
+import { FocusInvalidInputDirective } from './focus-invalid-input.directive';
 
 
 @NgModule({

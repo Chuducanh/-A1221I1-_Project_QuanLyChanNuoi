@@ -54,7 +54,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 antMatchers("/api/auth/**", "/api/news/**").permitAll()
                 .antMatchers("/api/employee/**").hasRole("ADMIN")
                 .antMatchers("/api/animal/**").hasAnyRole("ADMIN", "EMPLOYEE")
-                .anyRequest().authenticated();
+                .anyRequest().authenticated()
+                .and()
+                .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(60 * 60 * 24);;
         http.exceptionHandling()
                 .authenticationEntryPoint(
                         (request, response, ex) -> {
